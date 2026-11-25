@@ -1,8 +1,8 @@
 # FlowGPT Connection Diagnostics
 
-[Installation and usage guide](docs/Guide.html) · [Privacy policy](docs/PRIVACY.md)
+[Installation and usage guide](docs/GUIDE.md) · [Privacy policy](docs/PRIVACY.md)
 
-This is an unpacked Chrome extension for internal testing. To try it, open chrome://extensions, turn on Developer mode, click **Load unpacked**, and select the **flowgpt-chrome-diagnostics** folder.
+This Chrome extension helps FlowGPT and Emochi users record connection failures and share a diagnostic report with support. To try it from source, open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked**, and select the folder containing `manifest.json`.
 
 1. Open the affected FlowGPT or Emochi page and choose **Start recording** in the extension.
 2. Repeat the action that failed in that tab without changing networks. The page panel shows the countdown and the number of failed requests. You can hide it and keep recording.
@@ -18,4 +18,4 @@ The ZIP contains the selected report as text, all failures recorded so far in CS
 
 Use **Filter requests** to narrow by request area or failure type. The ZIP still includes every recorded failure with both labels and the evidence behind the classification. A 403 with only a Ray ID is marked source unverified. Cloudflare-generated errors are identified from their diagnostic headers or a recognized block page with a matching Ray ID.
 
-The Chrome Web Store is the distribution path for regular users. This prototype has not been published.
+The Chrome Web Store is the distribution path for regular users.
