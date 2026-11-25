@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlowGPT Connection Diagnostics</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p>FlowGPT Support</p>
+      <h1>Connection diagnostics</h1>
+    </header>
+    <div id="capture-status" class="capture-status" data-phase="idle">
+      <strong id="capture-phase" role="status">Not started</strong>
+      <span id="countdown" aria-hidden="true" hidden></span>
+    </div>
+    <section id="instructions" aria-labelledby="instructions-title">
+      <h2 id="instructions-title">How to run a test</h2>
+      <ol>
+        <li>Open the FlowGPT or Emochi page where you saw the error.</li>
+        <li>Click <strong>Start recording</strong> and repeat what failed in the same tab.</li>
+        <li>Open this extension again. Download the ZIP or copy the report, then send it to support.</li>
+      </ol>
+      <p class="hint">Recording saves failed request URLs and diagnostic details on this device. The report can include your public IP. You choose whether to share the report with support.</p>
+    </section>
+    <div class="capture-actions">
+      <p id="recording" hidden></p>
+      <div class="controls">
+        <button id="start" type="button">Start recording</button>
+        <button id="stop" type="button" hidden>Stop recording</button>
+      </div>
+    </div>
+    <section id="results" aria-label="Captured failure" hidden>
+      <details id="filters">
+        <summary>Filter requests <span id="filter-count"></span></summary>
+        <div class="filter-fields">
+          <div>
+            <label for="area-filter">Request area</label>
+            <div class="select"><select id="area-filter"></select></div>
+          </div>
+          <div>
+            <label for="failure-filter">Failure type</label>
+            <div class="select"><select id="failure-filter"></select></div>
+          </div>
+        </div>
+      </details>
+      <p id="no-matches" class="hint" role="status" hidden>No requests match these filters.</p>
+      <div id="picker" hidden>
+        <label for="failure">Which request failed?</label>
+        <div class="select"><select id="failure"></select></div>
+      </div>
+      <div class="vpn-row" data-selection>
+        <label for="vpn">Using a VPN or proxy?</label>
+        <div class="select">
+          <select id="vpn">
+            <option>Not sure</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+      </div>
+      <p id="ip-status" class="hint" role="status" hidden></p>
+      <div class="controls report-actions" data-selection>
+        <button type="button" id="bundle">Download ZIP</button>
+        <button type="button" class="secondary" id="copy">Copy report</button>
+        <button type="button" class="secondary" id="evidence">Save image</button>
+      </div>
+      <textarea id="report" data-selection spellcheck="false" readonly aria-label="Support report preview"></textarea>
+      <p class="hint" data-selection>ZIP includes all captured requests. Review the screenshot before sharing.</p>
+    </section>
+    <p id="feedback" role="status" hidden></p>
+    <footer id="footer">
+      <p id="retention">Each tab records separately for up to five minutes. Save your report before closing the tab.</p>
+      <button type="button" id="clear" hidden>Clear report</button>
+    </footer>
+  </main>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
