@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "FlowGPT Connection Diagnostics",
   "description": "Record failed requests in a FlowGPT or Emochi tab and export a diagnostic report for support.",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "minimum_chrome_version": "112",
   "permissions": ["webRequest", "storage", "activeTab", "scripting", "alarms"],
   "host_permissions": [
