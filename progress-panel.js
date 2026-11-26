@@ -8,20 +8,22 @@
   const styles = new CSSStyleSheet();
   styles.replaceSync([
     ":host { all: initial; display: block; position: fixed; right: 14px; bottom: 14px; width: min(305px, calc(100vw - 28px));",
-    "  z-index: 2147483647; color: #16372e; pointer-events: none; color-scheme: light; }",
+    "  --ink: #282147; --muted: #585171; --paper: #f7f6fc; --line: #d6d0eb;",
+    "  --accent: #4f40b7; --accent-soft: #ede9fa; --focus: #6b53c9; --warning: #9b411c;",
+    "  z-index: 2147483647; color: var(--ink); pointer-events: none; color-scheme: light; }",
     ":host([hidden]), [hidden] { display: none !important; }",
-    ".card { box-sizing: border-box; padding: 11px 12px; border: 1px solid #adc8ba; border-radius: 10px;",
-    "  background: #f7fbf9; box-shadow: 0 4px 16px #183d3030; font: 13px/1.4 system-ui, sans-serif; pointer-events: auto; }",
+    ".card { box-sizing: border-box; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px;",
+    "  background: var(--paper); box-shadow: 0 4px 16px #29214930; font: 13px/1.4 system-ui, sans-serif; pointer-events: auto; }",
     ".top, .phase { display: flex; align-items: center; gap: 7px; }",
-    ".top { justify-content: space-between; color: #426058; margin-bottom: 4px; }",
-    ".phase { color: #185b47; font-weight: 700; }",
-    ".phase[data-phase=detected] { color: #934019; }",
+    ".top { justify-content: space-between; color: var(--muted); margin-bottom: 4px; }",
+    ".phase { color: var(--accent); font-weight: 700; }",
+    ".phase[data-phase=detected] { color: var(--warning); }",
     ".phase::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: 0 0 7px; }",
-    ".time { margin-left: auto; color: #426058; font-weight: 500; font-variant-numeric: tabular-nums; }",
+    ".time { margin-left: auto; color: var(--muted); font-weight: 500; font-variant-numeric: tabular-nums; }",
     "p { margin: 4px 0 0; }",
-    "button { min-height: 25px; padding: 2px 6px; background: #eaf3ee; color: #185b47;",
-    "  border: 1px solid #c0d4c9; border-radius: 5px; font: inherit; cursor: pointer; }",
-    "button:hover { background: #ddeee4; } button:focus-visible { outline: 2px solid #297f65; outline-offset: 2px; }",
+    "button { min-height: 25px; padding: 2px 6px; background: var(--accent-soft); color: var(--accent);",
+    "  border: 1px solid var(--line); border-radius: 5px; font: inherit; cursor: pointer; }",
+    "button:hover { background: #e2daf7; } button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }",
   ].join("\n"));
   shadow.adoptedStyleSheets = [styles];
 
@@ -33,12 +35,12 @@
   }
 
   const card = element("aside", "card");
-  card.setAttribute("aria-label", "FlowGPT diagnostics progress");
+  card.setAttribute("aria-label", "Connection Diagnostics progress");
   const top = element("div", "top");
   const hide = element("button", "", "Hide");
   hide.type = "button";
   hide.setAttribute("aria-label", "Hide diagnostics progress");
-  top.append(element("span", "", "FlowGPT diagnostics"), hide);
+  top.append(element("span", "", "Connection Diagnostics"), hide);
   const phase = element("div", "phase");
   const label = element("span");
   label.setAttribute("role", "status");

@@ -54,9 +54,9 @@ export async function saveEvidence(tabId, report) {
   const reportHeight = 2 * margin + lines.length * lineHeight;
   canvas.width = width;
   canvas.height = reportHeight + imageHeight;
-  context.fillStyle = "#eef5f1";
+  context.fillStyle = "#f7f6fc";
   context.fillRect(0, 0, width, reportHeight);
-  context.fillStyle = "#16372e";
+  context.fillStyle = "#282147";
   context.font = font;
   context.textBaseline = "top";
   lines.forEach((line, index) => context.fillText(line, margin, margin + index * lineHeight));

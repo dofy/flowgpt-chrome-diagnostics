@@ -3,6 +3,7 @@ import { WINDOW_MS, HOSTS, captureProgress, failureFrom, isRecording, rayId, req
 
 const networkFilter = { urls: HOSTS.map((host) => "https://*." + host + "/*") };
 const alarmPrefix = "recording-deadline:";
+const badgeAccent = "#4f40b7";
 const updates = new Map();
 
 function update(tabId, task) {
@@ -65,9 +66,9 @@ async function identifyBlockPage(tabId, pageUrl, session) {
 async function publishProgress(tabId, session, inject = false) {
   const current = captureProgress(session);
   const badge = {
-    recording: ["REC", "#185b47"],
+    recording: ["REC", badgeAccent],
     detected: ["ERR", "#9b411c"],
-    ready: ["RPT", "#185b47"],
+    ready: ["RPT", badgeAccent],
   }[current.phase];
   const panel = session && !session.panelHidden
     ? { current, finished: captureProgress(session, session.endsAt) }
@@ -84,7 +85,7 @@ async function publishProgress(tabId, session, inject = false) {
   };
   await Promise.allSettled([
     chrome.action.setBadgeText({ tabId, text: badge?.[0] ?? "" }),
-    chrome.action.setBadgeBackgroundColor({ tabId, color: badge?.[1] ?? "#185b47" }),
+    chrome.action.setBadgeBackgroundColor({ tabId, color: badge?.[1] ?? badgeAccent }),
     chrome.action.setTitle({ tabId, title: "FlowGPT Diagnostics · " + current.label }),
     deliver(),
   ]);

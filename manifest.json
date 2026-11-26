@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "FlowGPT Connection Diagnostics",
   "description": "Record failed requests in a FlowGPT or Emochi tab and export a diagnostic report for support.",
-  "version": "0.5.2",
+  "version": "0.5.5",
   "minimum_chrome_version": "112",
   "permissions": ["webRequest", "storage", "activeTab", "scripting", "alarms"],
   "host_permissions": [
@@ -11,17 +11,17 @@
     "https://*.flow.chat/*"
   ],
   "icons": {
-    "16": "icons/emochi-16.png",
-    "32": "icons/emochi-32.png",
-    "48": "icons/emochi-48.png",
-    "128": "icons/emochi-128.png"
+    "16": "icons/diagnostics-16.png",
+    "32": "icons/diagnostics-32.png",
+    "48": "icons/diagnostics-48.png",
+    "128": "icons/diagnostics-128.png"
   },
   "background": { "service_worker": "background.js", "type": "module" },
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "icons/emochi-16.png",
-      "32": "icons/emochi-32.png"
+      "16": "icons/diagnostics-16.png",
+      "32": "icons/diagnostics-32.png"
     }
   }
 }
